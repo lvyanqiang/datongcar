@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contact.css" />
+	</head>
+
+	<body>
+
+		<div class="header">
+			<div class="top">
+				<div class="header_top">
+					<div class="header_left">
+						<a href="#">
+							<img src="../img/logo.png" alt="logo" />
+						</a>
+					</div>
+					<div class="header_right">
+						<ul>
+							<li>
+								<a href="#" class="list_1">访问海淀生活网</a>
+							</li>
+							<li>
+								<a href="#">名店街</a>
+							</li>
+							<li>
+								<a href="#">行业街</a>
+							</li>
+							<li>
+								<a href="#">收藏此店铺</a>
+							</li>
+						</ul>
+						<a href="#">商品宝第<span>3</span>年</a>
+					</div>
+				</div>
+			</div>
+			<div class="header_middle">
+				<div class="middle_c">
+					<div class="header_ml">
+						<h2>北京大通汽车销售有限公司</h2>
+					</div>
+					<div class="header_mr">
+						<img src="../img/Icon_01.png" />
+						<span>咨询电话：</span>
+						<span>0577-65526799</span>
+					</div>
+				</div>
+			</div>
+			<div class="header_bottom">
+				<div class="header_nav">
+					<ul>
+						<li><a href="../index.html">首页</a></li>
+						<li><a href="aboutown.html">关于我们</a></li>
+						<li><a href="newscenter.html">新闻中心</a></li>
+						<li><a href="marketdynamics.html">市场动态</a></li>
+						<li><a href="展厅详情.html">汽车展厅</a></li>
+						<li><a href="信息.html">促销信息</a></li>
+						<li><a href="coupon.html">优惠券</a></li>
+						<li><a href="feedback.html">客户留言</a></li>
+						<li><a href="contact.html">联系我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="banner">
+			<div><img src="../img/汽车展厅副本_02.png" /></div>
+		</div>
+		<div class="promotion">
+			<div class="promotion_div">
+				<div class="promotion_left">
+					<ul>
+						<li>关于我们</li>
+						<li>新闻中心</li>
+						<li>市场动态</li>
+						<li>促销信息</li>
+						<li>优惠券</li>
+						<li>有奖活动</li>
+						<li>客户留言</li>
+						<li>联系我们</li>
+					</ul>
+				</div>
+
+				<div class="contact_list">
+					<b class="contact_list_b"><span>联系我们</span></b>
+					<div class="contact_list1">
+						<ul>
+							<li><b>地址：</b>北京市海淀区</li>
+							<li><b>邮编：</b>1452315</li>
+							<li><b>咨询电话：</b>010-5546455</li>
+							<li><b>传真：</b>2552596</li>
+							<li><b>QQ:</b>1515651212
+								<a href="tencent://message/?uin=3466455852&Site" class="qq"><img src="../img/qq-1.png" /></a>
+							</li>
+							<li><b>手机：</b>15188889465</li>
+							<li><b>联系人：</b>王小姐</li>
+						</ul>
+
+						<input type="button" name="" id="" value="设置地图标注" />
+						<div class="contact_dibiao">
+							<span>
+						您的地图标注信息
+					</span>
+							<div id="container"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="footer">
+			<div class="footer_box">
+				<div class="footer_l">
+					<div>www.aiche.ccoo.cn</div>
+				</div>
+				<div class="footer_r">
+					<div>汽车销售部 版权所有.服务提供：海淀生活网 网站管理</div>
+					<div>Copyright @ 海淀生活网 2004-2011. ALL Rights Reserved</div>
+					<div>您是第125984位访问者</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="http://api.map.baidu.com/api?v=2.0&ak=G7ba0ezs6ypLLlYV70upRBUVjO1AfuIW" type="text/javascript"></script>
+	<script type="text/javascript">
+		var map = new BMap.Map("container"); // 创建地图实例
+		var point = new BMap.Point(116.404, 39.915); // 创建点坐标
+
+		map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
+
+		map.addControl(new BMap.NavigationControl()); //他包含控制地图的平移和缩放的功能。
+		map.addControl(new BMap.ScaleControl()); //缩略地图控件，是一个可折叠的缩略地图。
+		map.addControl(new BMap.OverviewMapControl()); //缩略地图控件
+		map.addControl(new BMap.MapTypeControl()); //地图类型控件
+
+		map.enableScrollWheelZoom(); //启用滚轮放大缩小，默认禁用
+
+		//自定义给中心点添加标注
+		var myIcon=new BMap.Icon("logo.png",new BMap.Size(50,25));
+
+
+		var navigationControl = new BMap.NavigationControl({
+			// 靠左上角位置
+			anchor: BMAP_ANCHOR_TOP_LEFT,
+			// LARGE类型
+			type: BMAP_NAVIGATION_CONTROL_LARGE,
+			// 启用显示定位
+			enableGeolocation: true // 会多出一个点
+		});
+		map.addControl(navigationControl);
+		// 添加定位控件
+		var geolocationControl = new BMap.GeolocationControl();
+		geolocationControl.addEventListener("locationSuccess", function(e) {
+			// 定位成功事件
+			var address = '';
+			address += e.addressComponent.province;
+			address += e.addressComponent.city;
+			address += e.addressComponent.district;
+			address += e.addressComponent.street;
+			address += e.addressComponent.streetNumber;
+			alert("当前定位地址为：" + address);
+		});
+		geolocationControl.addEventListener("locationError", function(e) {
+			// 定位失败事件
+			alert(e.message);
+		});
+		map.addControl(geolocationControl);
+	</script>
+
+</html>
